@@ -21,6 +21,7 @@
     </a>
     
   </div>
+  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
   <nav>
       <ul> 
           <li><a href="index.html"> <span class="material-symbols-outlined">home</span>Inicio</a></li>
@@ -209,25 +210,7 @@ establecidas en la LOPD y normativa de desarrollo.</p>
   </section>
 
 <script src="script.js"></script>
-<script type="module" src="mostrar-reseñas.js"></script>
- <script>
-  let lastScroll = 0;
-  const header = document.querySelector("header");
 
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScroll) {
-      // Bajando -> ocultar
-      header.classList.add("hide");
-    } else {
-      // Subiendo -> mostrar
-      header.classList.remove("hide");
-    }
-
-    lastScroll = currentScroll;
-  });
-</script>
 </main>
 <footer>
 
@@ -258,7 +241,14 @@ establecidas en la LOPD y normativa de desarrollo.</p>
     &copy; 2025 @ilustracioncreativa - Todos los derechos reservados.
   </div>
 </footer>
+<script>
+  const toggleBtn = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector("nav");
 
+  toggleBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+</script>
 
 
 </body>

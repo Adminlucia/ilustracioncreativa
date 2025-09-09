@@ -10,6 +10,9 @@
                         body {
                             background: #fafafa;
                             color: #333;
+                            display: flex;
+  flex-direction: column;
+  min-height: 94vh;
                         }
                         /* Loader full screen con logo centrado */
 /* Loader full screen con logo centrado */
@@ -92,22 +95,16 @@
 
 
  /* HEADER */        
-                      header {
-                    background: #b0cf76;
-                    padding: 20px 120px;
-                    display: flex;
-                    justify-content: space-between; /* Logo+texto a la izquierda, menú a la derecha */
-                    align-items: center;
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                            position:sticky;
-                            top: 0;
-                            left: 0;
-                            width: 100%; /* Para que cubra todo el ancho */
-                            z-index: 999; /* Para que quede por encima de todo */
-                        }
-
-/* Header ocultable */
-header {
+                    header {
+  background: #b0cf76;
+  padding: 20px 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -139,6 +136,14 @@ header.hide {
                     display: flex;
                     gap: 30px;
                 }
+                nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
                 nav ul li {
                     position: relative;
@@ -149,6 +154,29 @@ header.hide {
                     align-items: flex-end; /* centra verticalmente icono y texto */
                     gap: 2px;            /* espacio entre icono y texto */
                 }
+
+/* Submenús */
+.dropdown-menu, .dropdown-submenu {
+  list-style: none;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  padding: 10px 0;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.submenu:hover .dropdown-submenu {
+  display: block;
+}
 
 
                 /* Submenú (Nivel 2) */
@@ -577,6 +605,7 @@ header.hide {
 
 
                                   main {background-color: #ffffff;
+                                    flex:1;
                                   }
 /* (PRODUCTO ZOOM)*/
 
@@ -1134,3 +1163,338 @@ color:#a14946}
 .footer-social .redes:hover {
   transform: scale(1.2); /* efecto al pasar el mouse opcional */
 }
+
+
+/*RESPONSIVE*/
+/* ------------------- HAMBURGUESA ------------------- */
+.menu-toggle {
+  display: none; /* se mostrará solo en móvil */
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ------------------- RESPONSIVE ------------------- */
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 30px;
+  }
+
+  .featured-illustrations {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .product-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-left img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
+/* -------- MÓVILES Y TABLETS -------- */
+@media (max-width: 768px) {
+  header {
+    display: flex; /* Flexbox para alinear logo y menú */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Logo izq, hamburguesa der */
+    position: relative;
+    padding: 10px 20px;
+  }
+
+  /* Mostrar hamburguesa */
+  .menu-toggle {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff505f;
+  }
+
+  /* Menú móvil oculto por defecto */
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #8faa5d;
+    position: absolute;
+    top: 100%; /* justo debajo del header */
+    right: 20px;
+    border-radius: 12px;
+    padding: 10px 0;
+    min-width: 200px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 999;
+  
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    padding: 0 15px;
+  }
+
+  nav ul li {
+    position: relative;
+    
+  }
+
+  /* Ajustes collage */
+/* RESPONSIVE: Ajuste entre header y footer */
+/* RESPONSIVE: Ajuste entre header y footer */
+@media (max-width: 1024px) {
+
+  /* Ajuste responsive de la imagen principal */
+@media (max-width: 1024px) {
+  .main-image-principal {
+    flex: 2;                /* ocupa más espacio que la columna derecha */
+    height: auto;           /* altura se ajusta al contenido */
+    min-height: 250px;      /* altura mínima para que se vea completa */
+    display: flex;
+    align-items: stretch;   /* fuerza que la imagen ocupe todo el contenedor */
+  }
+
+  .main-image-principal img {
+    width: 100%;
+    height: 100%;           /* llena todo el contenedor */
+    object-fit: cover;      /* mantiene proporción sin deformar */
+    border-radius: 12px;
+  }
+}
+
+  .featured-illustrations {
+    display: flex;
+    gap: 15px;
+    width: 95%;
+    margin: 20px auto;
+    height: calc(100vh - 160px); /* espacio disponible entre header y footer */
+    align-items: stretch;
+  }
+
+  /* Imagen principal a la izquierda */
+  .main-image-principal {
+    flex: 2;
+    height: 100%;
+    display: flex;
+  }
+  .main-image-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    object-position:top;
+  }
+
+  /* Contenedores de la derecha */
+  .flip-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+  }
+
+  /* Cada contenedor individual de la derecha */
+  .flip-cards .main-image,
+  .flip-cards .collage-item {
+    flex: 1;                  /* altura uniforme dentro del flex */
+    width: 100%;
+    min-height: 120px;        /* asegura que siempre se vea */
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+  }
+  .flip-cards .main-image img,
+  .flip-cards .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Móviles grandes y tablets (hasta 768px) */
+@media (max-width: 768px) {
+  .featured-illustrations {
+    flex-direction: column;
+    gap: 15px;
+    width: 95%;
+    margin: 20px auto;
+    height: auto;
+  }
+
+  .main-image-principal,
+  .flip-cards {
+    width: 100%;
+    height: auto;
+    object-position:center;
+  }
+
+  .flip-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .flip-cards .main-image,
+  .flip-cards .collage-item {
+    width: calc(33.333% - 10px);
+    min-height: 120px;       /* garantiza que sean visibles */
+  }
+}
+
+/* Móviles muy pequeños (hasta 480px) */
+@media (max-width: 480px) {
+  .flip-cards .main-image,
+  .flip-cards .collage-item {
+    width: 100%;
+    min-height: 100px;       /* se apilan verticalmente */
+  }
+}
+
+/* Pantallas hasta 480px (móviles pequeños) */
+@media (max-width: 480px) {
+  .flip-cards .main-image,
+  .flip-cards .collage-item {
+    width: 100%;
+    min-height: 100px;
+  }
+
+  .review-card {
+    min-width: 100%;
+    max-height: 140px;
+  }
+
+  .review-card p {
+    max-height: 70px;
+    font-size: 0.8rem;
+  }
+  .reviews-section {
+    margin-top: 15px; /* margen superior extra */
+  }
+}
+
+
+
+
+
+  /* Hero */
+  .hero h2 {
+    font-size: 35px;
+  }
+  .product-title {
+    font-size: 32px;
+  }
+  .product-features-title {
+    font-size: 24px;
+  }
+  .main-view img {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .form-container,
+  .contact-info {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+}
+
+
+/* MÓVILES PEQUEÑOS */
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+  .product-title {
+    font-size: 26px;
+  }
+  .product-contact-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  nav a {
+    font-size: 16px;
+  }
+  .review-card {
+    min-width: 90%;
+  }
+}
+
+
+
+/* Footer redes sociales - móviles */
+@media (max-width: 768px) {
+  .footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* o center si quieres centrar */
+    gap: 10px; /* espacio entre los logos */
+    flex-wrap: nowrap; /* evita que se vayan a otra línea */
+  }
+
+  .footer-social p {
+    margin: 0; /* quitar margen si lo tiene */
+    font-size: 16px;
+  }
+
+  .footer-social a img.redes {
+    width: 30px; /* ajusta tamaño según quieras */
+    height: auto;
+  }
+}
+
+
+/* Móviles y tablets (hasta 1024px de ancho) */
+@media (max-width: 1024px) {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+   main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: calc(100vh - 160px); /* altura total menos header + footer */
+   
+    gap: 20px;
+  }
+
+  footer {
+    background: #eba4a4;
+    padding: 10px;
+  }
+}
+

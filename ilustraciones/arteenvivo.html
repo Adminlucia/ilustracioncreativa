@@ -21,6 +21,7 @@
     </a>
     
   </div>
+  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
   <nav>
       <ul> 
           <li><a href="index.html"> <span class="material-symbols-outlined">home</span>Inicio</a></li>
@@ -113,7 +114,14 @@ digital para su posterior distribución, ofreciendo una experiencia única y un 
 </footer>
 <script src="script.js"></script>
 <script src="zoom-producto.js"></script>
+<script>
+  const toggleBtn = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector("nav");
 
+  toggleBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+</script>
 
 </body>
 </html>
