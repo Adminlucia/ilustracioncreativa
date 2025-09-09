@@ -23,7 +23,7 @@
     
   </div>
 </div>
-
+ 
  
 <header>
   <div class="logo-text">
@@ -32,6 +32,7 @@
     </a>
     
   </div>
+  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
   <nav>
       <ul> 
           <li><a href="index.html"> <span class="material-symbols-outlined">home</span>Inicio</a></li>
@@ -60,7 +61,6 @@
       </ul>
   </nav>
 </header>
-
 <main>
   <section class="hero" id="inicio">
     <h2>"Ilustrando lo que tú sueñas"</h2>
@@ -126,7 +126,9 @@
     </div>
   </section>
 
-
+<br>
+<br>
+<br>
 
 <!-- SCRIPTS -->
 
@@ -144,24 +146,7 @@
 
 <script src="script.js"></script>
 <script type="module" src="mostrar-reseñas.js"></script>
- <script>
-  let lastScroll = 0;
-  const header = document.querySelector("header");
 
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScroll) {
-      // Bajando -> ocultar
-      header.classList.add("hide");
-    } else {
-      // Subiendo -> mostrar
-      header.classList.remove("hide");
-    }
-
-    lastScroll = currentScroll;
-  });
-</script>
 
 <footer>
 
@@ -191,7 +176,10 @@
   <div class="footer-copy">
     &copy; 2025 @ilustracioncreativa - Todos los derechos reservados.
   </div>
+</main>
 </footer>
+
+
 <script>
   const minTime = 2000; // duración mínima en ms
   const startTime = Date.now();
@@ -221,6 +209,22 @@
   loaderButton.addEventListener("click", () => {
     window.location.href = "collagespersonalizados.html";
   });
+
+
 </script>
+
+<script>
+  const toggleBtn = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector("nav");
+
+  toggleBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+</script>
+
+
 </body>
 </html>
+
+
+
